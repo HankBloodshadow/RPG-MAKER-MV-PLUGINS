@@ -1,17 +1,55 @@
-# RPG-MAKER-MV-PLUGINS
-A Collection of helpful RPG Maker MV Plugins.
+# RPG Maker MV Plugins Collection
 
-Plugins for RPG Maker MV only.
+A collection of helpful **RPG Maker MV** plugins.  
 
-InBattleCheck ["BattleCheck"] - tracked by a global switch provides the ability to check if in battle using a conditional branch in events. Requires minimal setup, assign a global switch and use the plugin command ["BattleCheck"]. Why does this exist? Well, sometimes you might want a global event to trigger instead of creating multiple troop events.
+> Note: All plugins listed here are for **RPG Maker MV only**.
 
-AnalogueStickMovement - Allows the use of one (1) analogue stick (left or right) on the gamepad for four (4) directional movement and UI controls. Does not handle anything other than the analogue stick.
+---
 
-RunCommonEventOnce ["RunCommonEventOnce","ResetOneTimeEvents","RunCommonEventOnBattleStart","RunCommonEventOnBattleEnd"] - A versatile plugin for running a global common event once. It can do a generic parallel or autorun launched event. Please read the guide to understand how to setup. It also allows triggering of common events at the start and end of battle.
+## Plugins
 
-DefaultOptions - a plugin that exposes inbuilt options settings in the plugin manager to allow for setting default options when there is no config.rpgsave file, making deployment easier and player first time experiences better.
+### `InBattleCheck` ["BattleCheck"]
+Tracks battle state via a global switch, allowing you to check if the player is **in battle** using a conditional branch in events.  
 
-DefaultOptionsExtension - allows you to add your own default plugin options (an API to interface with DefaultOptions).
+- **Setup:** Minimal; assign a global switch and use the plugin command `BattleCheck`.  
+- **Use case:** Sometimes you want a global event to trigger instead of creating multiple troop events.  
 
-If you would like to assist with the development of these plugins feel free to submit a pull req.
+---
 
+### `AnalogueStickMovement`
+Enables use of **one analogue stick** (left or right) on a gamepad for:  
+
+- Four-directional movement  
+- UI controls  
+
+> Note: Only handles analogue stick input. Other controls are unaffected.  
+
+---
+
+### `RunCommonEventOnce` ["RunCommonEventOnce", "ResetOneTimeEvents", "RunCommonEventOnBattleStart", "RunCommonEventOnBattleEnd"]
+A versatile plugin for running a **global common event once**.  
+
+- Supports **generic parallel or autorun events**.  
+- Allows triggering events at the **start** and **end of battles**.  
+- **Setup:** Please read the guide to configure correctly.  
+
+---
+
+### `DefaultOptions`
+Exposes **built-in RPG Maker MV options** in the plugin manager:  
+
+- Allows setting **default options** for first-time players.  
+- Applies only when **`config.rpgsave` does not exist**.  
+- Makes deployment easier and improves the **player’s first-time experience**.  
+
+---
+
+### `DefaultOptionsExtension`
+An extension for `DefaultOptions`:  
+
+- Adds an **API to set custom default plugin options**.  
+- Works dynamically for any additional options you want to define.  
+
+---
+
+If you would like to **assist with the development** of these plugins, feel free to **submit a pull request or fork the repo**!
