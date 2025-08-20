@@ -1,47 +1,58 @@
 /*:
- * @plugindesc v1.0 Extension for "DefaultOptions" plugin — allows dynamic registration of default config values via script API. (RPG Maker MV)
+ * @plugindesc v1.6 Optimized DataManager Extension for "DefaultOptions" plugin — dynamic default registration (RPG Maker MV)
  * @author Hank_Bloodshadow
  *
  * @help
- * This extension plugin expands "DefaultOptions.js".
+ * Expands "DefaultOptions.js" safely.
  *
- * ⚠️ Requires "DefaultOptions.js" to be installed and placed ABOVE this plugin.
+ * ⚠️ Requires "DefaultOptions.js" to be installed in your project.
  *
  * Usage (script calls in an event or another plugin):
  *   DefaultOptions.registerDefault("myCustomOption", true);
  *   DefaultOptions.registerDefault("customVolume", 75);
  *   DefaultOptions.registerDefault("playerSkin", "blue");
- *
- * On the first run (when no config.rpgsave exists), the values registered
- * here will be applied automatically. Once a config file exists, it will not
- * overwrite the player's saved settings.
  */
 
 (function() {
-    if (typeof DefaultOptions === "undefined") {
-        console.error("DefaultOptionsExtension loaded, but DefaultOptions.js not found!");
-        return;
-    }
 
-    // Storage for dynamic defaults
-    DefaultOptions._extraDefaults = DefaultOptions._extraDefaults || {};
+    // Wait until DefaultOptions is defined
+    var checkInterval = setInterval(function() {
+        if (typeof DefaultOptions !== "undefined") {
+            clearInterval(checkInterval);
+            initDefaultOptionsExtension();
+        }
+    }, 50);
 
-    // API method for other plugins / events
-    DefaultOptions.registerDefault = function(key, value) {
-        this._extraDefaults[key] = value;
-    };
+    function initDefaultOptionsExtension() {
+        if (DefaultOptions._extensionLoaded) return;
 
-    // Hook into ConfigManager.load
-    var _DefaultOptions_ConfigManager_load = ConfigManager.load;
-    ConfigManager.load = function() {
-        _DefaultOptions_ConfigManager_load.call(this);
+        // Storage for dynamic defaults
+        DefaultOptions._extraDefaults = DefaultOptions._extraDefaults || {};
 
-        if (!StorageManager.exists(-2)) {
-            for (var key in DefaultOptions._extraDefaults) {
-                if (DefaultOptions._extraDefaults.hasOwnProperty(key)) {
-                    this[key] = DefaultOptions._extraDefaults[key];
+        // API method for other plugins / events
+        DefaultOptions.registerDefault = function(key, value) {
+            this._extraDefaults[key] = value;
+        };
+
+        // Hook ConfigManager.load once
+        var _ConfigManager_load = ConfigManager.load;
+        ConfigManager.load = function() {
+            _ConfigManager_load.call(this);
+
+            if (!StorageManager.exists(-2)) {
+                for (var key in DefaultOptions._extraDefaults) {
+                    if (DefaultOptions._extraDefaults.hasOwnProperty(key)) {
+                        // Only set if undefined
+                        if (this[key] === undefined) {
+                            this[key] = DefaultOptions._extraDefaults[key];
+                        }
+                    }
                 }
             }
-        }
-    };
+        };
+
+        DefaultOptions._extensionLoaded = true;
+        console.log("DefaultOptionsExtension loaded successfully!");
+    }
+
 })();
