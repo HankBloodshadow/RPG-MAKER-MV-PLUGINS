@@ -82,12 +82,12 @@
  * @help
  * This plugin lets you define default settings for RPG Maker MV’s Options menu.
  *
- * 🟢 Behavior:
+ * Behavior:
  * - On the very first run (when no config.rpgsave exists), the values you set
  *   in Plugin Manager will be applied.
  * - After that, the player’s personal config is respected.
  *
- * 💡 Notes:
+ * Notes:
  * - "Gamepad Vibration", "Show FPS", "Battle Animation", "Battle BGM" are not
  *   visible in the default Options menu but are tracked internally.
  * - "Window Tone" is an advanced value. Use comma-separated R,G,B,Grey.
@@ -145,3 +145,4 @@
     };
 
 })();
+
