@@ -1,0 +1,75 @@
+[
+  {
+    "id": 1,
+    "name": "Gather Ingredients",
+    "description": "Collect ingredients for the village feast.",
+    "requirements": [],
+    "stages": [
+      {
+        "name": "Stage 1",
+        "objectives": [
+          { "text": "Collect 5 Apples", "type": "counter", "target": 5 },
+          { "text": "Collect 3 Berries", "type": "counter", "target": 3 }
+        ]
+      },
+      {
+        "name": "Stage 2",
+        "objectives": [
+          { "text": "Return to the village elder", "type": "boolean" }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "name": "Defeat the Goblin Chief",
+    "description": "Eliminate the goblin threat near the forest.",
+    "requirements": [1],
+    "stages": [
+      {
+        "name": "Stage 1",
+        "objectives": [
+          { "text": "Find the goblin camp", "type": "boolean" },
+          { "text": "Defeat the Goblin Chief", "type": "boolean" }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "name": "Unlock the Ancient Door",
+    "description": "Solve the puzzle to access the ancient ruins.",
+    "requirements": [],
+    "stages": [
+      {
+        "name": "Stage 1",
+        "objectives": [
+          { "text": "Activate the left lever", "type": "boolean" },
+          { "text": "Activate the right lever", "type": "boolean" }
+        ]
+      },
+      {
+        "name": "Stage 2",
+        "objectives": [
+          { "text": "Defeat the guardian", "type": "boolean" },
+          { "text": "Open the door", "type": "questRef", "questId": 4 }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "name": "Enter the Ancient Ruins",
+    "description": "Explore the newly unlocked ruins.",
+    "requirements": [3],
+    "stages": [
+      {
+        "name": "Stage 1",
+        "objectives": [
+          { "text": "Step inside the ruins", "type": "boolean" },
+          { "text": "Light the first torch", "type": "counter", "target": 1 }
+        ]
+      }
+    ]
+  }
+]
