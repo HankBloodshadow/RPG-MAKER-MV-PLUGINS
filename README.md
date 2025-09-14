@@ -52,6 +52,6 @@ An extension for `DefaultOptions`:
 
 ---
 
-If you would like to **assist with the development** of these plugins, feel free to **submit a pull request or fork the repo**!
+If you would like to **assist with the development** of these plugins, feel free to **submit a pull request by forking the repo**!
 
 Or if you'd like to fuel my caffeine addiction and gimme a heart attack you can do so here https://ko-fi.com/hank_bloodshadow/tip
